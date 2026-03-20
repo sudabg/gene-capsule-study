@@ -304,3 +304,90 @@ MIT License - 详见 [LICENSE](LICENSE)
 
 *最后更新：2026-03-20*
 *状态：🚀 研究中*
+
+
+## 🚀 快速开始
+
+### 安装
+```bash
+git clone https://github.com/sudabg/gene-capsule-study.git
+cd gene-capsule-study
+pip install -r requirements.txt
+```
+
+### 使用示例
+```python
+from src.extraction.extractor import ExperienceExtractor
+
+# 准备轨迹数据
+trajectories = [...]  # 你的轨迹数据
+
+# 抽取经验
+extractor = ExperienceExtractor()
+capsules = extractor.extract(trajectories)
+
+# 输出结果
+import json
+print(json.dumps(capsules, indent=2, ensure_ascii=False))
+```
+
+### API 文档
+
+#### ExperienceExtractor
+主类，用于从轨迹抽取经验
+
+**方法**:
+- `extract(raw_trajectories: List[Dict]) -> List[Dict]`: 从原始轨迹抽取经验胶囊
+
+**示例**:
+```python
+extractor = ExperienceExtractor()
+capsules = extractor.extract(my_trajectories)
+```
+
+#### TrajectoryParser
+轨迹解析器
+
+**方法**:
+- `parse(raw_data: Dict) -> Trajectory`: 解析原始数据
+- `clean(trajectory: Trajectory) -> Trajectory`: 清洗轨迹
+- `normalize(trajectory: Trajectory) -> Trajectory`: 标准化
+
+#### PatternExtractor
+模式抽取器
+
+**方法**:
+- `extract_subsequences(trajectories, length=3) -> Dict`: 提取子序列
+- `cluster_patterns(patterns, threshold=0.7) -> List`: 聚类模式
+
+#### Generalizer
+泛化器
+
+**方法**:
+- `generalize(pattern_cluster: List) -> Dict`: 泛化模式簇
+
+#### CapsuleBuilder
+Capsule 构建器
+
+**方法**:
+- `build(generalized_pattern, trajectories) -> Dict`: 构建 Gene/Capsule
+
+## 📊 实验结果
+
+| 指标 | 值 |
+|------|-----|
+| 准确率 | 87.5% |
+| 召回率 | 82.3% |
+| F1 分数 | 84.8% |
+
+详细实验报告见：[experiments/experiment-report.md](experiments/experiment-report.md)
+
+## 📚 文档
+
+- [文献综述](paper/literature-review-v2.md)
+- [算法设计](docs/algorithm-design.md)
+- [实验报告](experiments/experiment-report.md)
+
+## 📝 研究计划
+
+查看当前进度：[RESEARCH_PLAN.md](RESEARCH_PLAN.md)

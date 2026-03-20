@@ -559,6 +559,8 @@ def phase3_code_implementation():
         f.write(implementation + "\n# TODO: 完整实现\n")
     
     log("  ✅ 代码框架已保存到 src/extraction/extractor_v2.py")
+    
+    log("  ✅ 代码框架已保存到 src/extraction/extractor_v2.py")
     save_progress("phase3", "completed", "代码框架完成")
     log("Phase 3: 代码实现 - 完成 ✅")
     return True
@@ -638,15 +640,6 @@ def main():
     log("=" * 60)
     
     save_progress("complete", "finished", f"深度研究完成，耗时{elapsed_time/60:.1f}分钟")
-
-if __name__ == "__main__":
-    main()
-'''
-    
-    with open(BASE_DIR / "real_research.py", "w", encoding="utf-8") as f:
-        f.write(implementation)
-    
-    log("✅ 研究脚本已更新")
 
 if __name__ == "__main__":
     main()

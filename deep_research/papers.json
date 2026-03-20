@@ -1,0 +1,98 @@
+{
+  "total_found": 10,
+  "high_relevance": 6,
+  "papers": [
+    {
+      "title": "ComSD: Balancing Behavioral Quality and Diversity in Unsupervised Skill Discovery",
+      "source": "arxiv",
+      "key_methods": [
+        "skill",
+        "learning"
+      ],
+      "datasets": [],
+      "metrics": [
+        "reward"
+      ],
+      "limitations": [],
+      "relevance_score": 3
+    },
+    {
+      "title": "Divide, Discover, Deploy: Factorized Skill Learning with Symmetry and Style Priors",
+      "source": "arxiv",
+      "key_methods": [
+        "skill",
+        "learning"
+      ],
+      "datasets": [],
+      "metrics": [
+        "reward"
+      ],
+      "limitations": [],
+      "relevance_score": 3
+    },
+    {
+      "title": "Hierarchical Cooperative Multi-Agent Reinforcement Learning with Skill Discovery",
+      "source": "arxiv",
+      "key_methods": [
+        "trajectory",
+        "skill",
+        "learning"
+      ],
+      "datasets": [],
+      "metrics": [
+        "reward"
+      ],
+      "limitations": [],
+      "relevance_score": 3
+    },
+    {
+      "title": "Agentic Skill Discovery",
+      "source": "arxiv",
+      "key_methods": [
+        "skill",
+        "policy",
+        "reasoning",
+        "learning"
+      ],
+      "datasets": [],
+      "metrics": [
+        "reward"
+      ],
+      "limitations": [],
+      "relevance_score": 2
+    },
+    {
+      "title": "Skill Discovery of Coordination in Multi-agent Reinforcement Learning",
+      "source": "arxiv",
+      "key_methods": [
+        "skill",
+        "learning"
+      ],
+      "datasets": [],
+      "metrics": [
+        "reward"
+      ],
+      "limitations": [],
+      "relevance_score": 2
+    },
+    {
+      "title": "Focus Agent: LLM-Powered Virtual Focus Group",
+      "source": "arxiv",
+      "key_methods": [
+        "skill"
+      ],
+      "datasets": [],
+      "metrics": [],
+      "limitations": [],
+      "relevance_score": 2
+    }
+  ],
+  "search_queries": [
+    "agent experience extraction",
+    "trajectory analysis reinforcement learning",
+    "skill discovery agent",
+    "program synthesis experience",
+    "case-based reasoning agent"
+  ],
+  "search_time": "2026-03-20T19:55:31.178443"
+}

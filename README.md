@@ -1,35 +1,28 @@
-# Gene-Capsule 经验抽取器
+# Gene-Capsule Study
 
-**版本**: v4.0 (简化版)  
-**原则**: 越简单越好
+![GitHub Stars](https://img.shields.io/github/stars/sudabg/gene-capsule-study?style=social)
+![License](https://img.shields.io/github/license/sudabg/gene-capsule-study)
+![Python](https://img.shields.io/badge/python-3.10+-blue)
+
+**Agent Experience Extraction & Knowledge Representation Research**
+
+一个研究 AI Agent 经验如何被结构化抽取、表示和复用的开源项目。核心概念：**Gene**（可复用策略模板）+ **Capsule**（经验证的具体解决方案）。
 
 ---
 
 ## 🚀 快速开始
 
-### 1. 安装
-
 ```bash
 pip install -r requirements.txt
 ```
 
-### 2. 使用
-
 ```python
 from src.extractor import ExperienceExtractor
 
-# 创建抽取器（零配置）
-extractor = ExperienceExtractor()
-
-# 抽取经验
+extractor = ExperienceExtractor()  # 零配置，开箱即用
 capsules = extractor.extract(trajectories)
-
-# 搜索经验
-results = extractor.search("api analysis", capsules=capsules)
-
-# 保存/加载
+results = extractor.search("api timeout", capsules=capsules)
 extractor.save(capsules, "output.json")
-capsules = extractor.load("output.json")
 ```
 
 ---
@@ -38,10 +31,9 @@ capsules = extractor.load("output.json")
 
 | 功能 | 说明 |
 |------|------|
-| **extract()** | 从轨迹抽取经验 |
+| **extract()** | 从 Agent 轨迹中抽取经验 Capsule |
 | **search()** | 关键词搜索 + 质量排序 |
-| **save()** | 保存到 JSON 文件 |
-| **load()** | 从 JSON 加载 |
+| **save()/load()** | 持久化经验库 (JSON) |
 
 ---
 
@@ -50,13 +42,22 @@ capsules = extractor.load("output.json")
 ```
 gene-capsule-study/
 ├── src/
-│   └── extractor.py          # ~180 行，核心实现
-├── tests/
-│   └── test_extractor.py     # 5 个集成测试
-├── docs/
-│   ├── SIMPLIFICATION_PLAN.md # 简化计划
-│   └── ...
-└── README.md
+│   ├── extractor.py              # 核心抽取器 (v4.0, ~180行)
+│   └── extraction/
+│       ├── extractor_v2.py       # v2 迭代
+│       ├── extractor_v3.py       # v3 迭代
+│       └── schema.py             # Gene/Capsule 数据结构定义
+├── paper/
+│   ├── literature-review.md      # 文献综述 v1
+│   ├── literature-review-v2.md   # 文献综述 v2
+│   ├── literature-review-deep.md # 深度文献综述
+│   └── literature-survey-deep.md # 深度调研报告
+├── experiments/
+│   └── experiment-report.md      # 实验报告
+├── docs/                         # 文档目录
+├── tests/                        # 测试 (5 个集成测试, 100% 通过)
+├── README.md
+└── requirements.txt
 ```
 
 ---
@@ -67,82 +68,39 @@ gene-capsule-study/
 python3 -m unittest tests.test_extractor -v
 ```
 
-**测试覆盖**: 5 个集成测试，100% 通过
+---
+
+## 📐 设计哲学
+
+> "在其他条件相同的情况下，越简单越好。"
+
+**v4.0 简化成果**:
+- 代码: 1578 行 → ~180 行 (**-89%**)
+- 类: 18 个 → 2 个 (**-89%**)
+- 配置: 15+ 项 → 0 项 (**-100%**)
 
 ---
 
-## 📐 设计原则
+## 🔬 研究方向
 
-### 简单性标准
-> 在其他条件相同的情况下，越简单越好。
+1. **经验抽取**: 从 Agent 执行轨迹中自动识别可复用模式
+2. **知识表示**: Gene (策略模板) + Capsule (验证方案) 双层结构
+3. **质量评估**: 基于置信度和成功次数的自动评分
+4. **检索分发**: 跨 Agent 的经验共享与复用机制
 
-**简化成果**:
-- 代码：1578 行 → ~180 行 (**-89%**)
-- 类：18 个 → 2 个 (**-89%**)
-- 配置：15+ 项 → 0 项 (**-100%**)
-
-### 核心 API
-
-```python
-# 零配置，开箱即用
-extractor = ExperienceExtractor()
-```
-
-### 简化对比
-
-| 版本 | 代码 | 类 | 配置 |
-|------|------|-----|------|
-| v3.0 | 1578 行 | 18 个 | 15+ 项 |
-| v4.0 | ~180 行 | 2 个 | 0 项 |
-| **减少** | **-89%** | **-89%** | **-100%** |
+相关项目: [EvoMap](https://evomap.ai) — AI Agent 协作进化市场
 
 ---
 
-## 📚 文档
+## 📚 文献综述
 
-- [简化计划](docs/SIMPLIFICATION_PLAN.md) - 重构详情
-- [使用教程](docs/USAGE.md) - 旧版（待更新）
-- [API 文档](docs/API.md) - 旧版（待更新）
+本项目包含多版本文献综述，覆盖：
+- Agent 经验抽取相关工作
+- 知识图谱在 Agent 记忆中的应用
+- RAG 在长期运行 Agent 中的扩展
+- 对比学习在知识去重中的进展
 
----
-
-## 🎯 使用场景
-
-### 场景 1: 从 Agent 轨迹抽取经验
-
-```python
-trajectories = [...]  # Agent 执行轨迹
-capsules = extractor.extract(trajectories)
-```
-
-### 场景 2: 搜索可复用经验
-
-```python
-results = extractor.search("API 调用", capsules=capsules)
-```
-
-### 场景 3: 持久化经验库
-
-```python
-extractor.save(capsules, "experience.json")
-```
-
----
-
-## 📈 性能指标
-
-| 指标 | 值 |
-|------|-----|
-| 代码行数 | ~180 |
-| 测试数量 | 5 |
-| 测试通过率 | 100% |
-| 配置项 | 0 |
-
----
-
-## 🤝 贡献
-
-欢迎提交 Issue 和 PR！
+详见 `paper/` 目录。
 
 ---
 
@@ -152,4 +110,4 @@ MIT License
 
 ---
 
-*最后更新：2026-03-21*
+*最后更新: 2026-03-28*
